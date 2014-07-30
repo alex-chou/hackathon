@@ -36,6 +36,12 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # user made
+    'hackathon.core',
+
+    # applications
+    'south',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -56,10 +62,6 @@ WSGI_APPLICATION = 'hackathon.wsgi.application'
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
 }
 
 # Internationalization
@@ -78,7 +80,8 @@ USE_TZ = True
 
 # Parse database configuration from $DATABASE_URL
 import dj_database_url
-DATABASES['default'] =  dj_database_url.config()
+DATABASES['default'] = 'postgres://ycxwsyblhverzj:RwxeUfbfpsYaJeg5eX3BA2DF-t@ec2-54-225-102-235.compute-1.amazonaws.com:5432/d315qoig2vddcv'
+# dj_database_url.config()
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
