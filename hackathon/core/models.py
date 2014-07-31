@@ -12,12 +12,12 @@ class Recreation(Model):
 
 class Reservation(Model):
     active = BooleanField(default=True)
-    notes = TextField(max_length=100, null=True, blank=True, db_index=True)
+    notes = TextField(max_length=100, null=True, blank=True, db_index=True, help_text="* Optional")
     created_at = DateTimeField(db_index=True, auto_now_add=True)
     start_time = DateTimeField(null=True, blank=True, db_index=True)
     end_time = DateTimeField(null=True, blank=True, db_index=True)
     user = ForeignKey(User)
-    recreation = ForeignKey(Recreation, related_name="recreation")
+    recreation = ForeignKey(Recreation, related_name="reservation")
 
     def __unicode__(self):
         return u"%s reserved" % self.recreation.name

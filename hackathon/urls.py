@@ -19,7 +19,7 @@ urlpatterns = patterns('',
         name='recreation'),
     url(r'^reservation/', 'hackathon.core.views.create_reservation',
         name='reservation'),
-    url(r'^user/', 'hackathon.core.views.create_user', name='user'),
+    url(r'^signup/', 'hackathon.core.views.create_user', name='signup'),
     # REST-ful API urls:
     url(r'^api/', include(recreation_resource.urls)),
     url(r'^api/', include(reservation_resource.urls)),

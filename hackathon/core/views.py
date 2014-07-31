@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
 
 from django import forms
+from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.http import Http404, HttpResponse
 from django.shortcuts import render, render_to_response
@@ -74,7 +75,7 @@ def create_user(request, template_name="create-user.html"):
 
             User.objects.create(
                 email = form.cleaned_data["email"],
-                username = form.cleaned_data["username"],
+                username = form.cleaned_data["email"].split("@")[0],
                 password = form.cleaned_data["password"]
             )
             success = "user created!"
@@ -86,10 +87,7 @@ def create_user(request, template_name="create-user.html"):
 
     return render_to_response(template_name, {"user_form": form, "success": success})
 
-def index(request, template_name="index.html"):
-    return render_to_response(template_name)
-
 @csrf_exempt
 def index(request, template_name="index.html"):
-    reservations = Reservation.objects.filter(end_time__gte=datetime.now())
+    reservations = Reservation.objects.filter(end_time__gte=datetime.now()).order_by("start_time")
     return render_to_response(template_name, {"reservations": reservations})

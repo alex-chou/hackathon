@@ -70,13 +70,14 @@ class ReservationForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
     date_choices = forms.ChoiceField(choices=DAYS)
     time_choices = forms.ChoiceField(choices=TIMES)
-    duration = forms.IntegerField(min_value=1)
+    duration = forms.IntegerField(min_value=1, help_text="* Duration in minutes")
     class Meta:
         model = Reservation
         exclude = ("active", "created_at")
-        fields = ("recreation", "notes")
+        fields = ("recreation", "email", "password", "date_choices", "time_choices", "duration", "notes")
 
 class UserForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput)
     class Meta:
         model = User
-        fields = ("email", "username", "password")
+        fields = ("email", "password")

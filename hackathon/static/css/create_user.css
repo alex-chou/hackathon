@@ -18,12 +18,7 @@ font-family: proxima-nova, sans-serif;
 font-size: 14pt;
 }
 
-textarea {
-resize: none;
-}
-
 td, th {
-vertical-align: top;
 padding: 0 10px 5px 10px;
 }
 
@@ -31,9 +26,9 @@ padding: 0 10px 5px 10px;
 font-size: 11pt;
 }
 
-#id_recreation, #id_email, #id_password, #id_date_choices, #id_time_choices, #id_duration, #id_notes {
-width: 100%;
+#id_email, #id_password {
 font-size: 12pt;
+width: 125%
 }
 
 #nav a {
@@ -65,4 +60,5 @@ margin-right: auto;
 #center {
 text-align: center;
 padding-top: 10px;
+font-size: 12pt;
 }
