@@ -5,6 +5,8 @@ from api import RecreationResource, ReservationResource, UserResource
 from django.contrib import admin
 admin.autodiscover()
 
+# adding something just to create trivial commit
+print "hello"
 # initialize API ModelResources
 recreation_resource = RecreationResource()
 reservation_resource = ReservationResource()
