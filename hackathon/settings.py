@@ -111,5 +111,3 @@ TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, '../assets/templates'),
 )
 
-# Django Tastypie setting(s)
-TASTYPIE_DEFAULT_FORMATS = ["json"]
