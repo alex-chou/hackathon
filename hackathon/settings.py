@@ -73,6 +73,7 @@ DATABASES = {
 if os.getenv("HEROKU", False):
     import dj_database_url
     DATABASES["default"] = dj_database_url.config(default="postgres://oiijlobtiozxwy:9T7mHNayD9kN0qFYzDa36ucDPB@ec2-54-204-43-139.compute-1.amazonaws.com:5432/d77c85c6jscev8")
+    DEBUG = False
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
@@ -109,3 +110,6 @@ STATICFILES_DIRS = (
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, '../templates'),
 )
+
+# Django Tastypie setting(s)
+TASTYPIE_DEFAULT_FORMATS = ["json"]
