@@ -17,7 +17,7 @@
       </div>
     </div>
 
-    <div>{{ success }}</div>
+    <div id="center">{{ success }}</div>
     <form action="" method="post">
       {% if reservation_form.errors %}
         <p class="error_message">
@@ -25,7 +25,7 @@
         </p>
       {% endif %}
       <table>{{ reservation_form.as_table }}</table>
-      <div id="center-button">
+      <div id="center">
         <input type="submit" value="Submit"/>
       </div>
     </form>

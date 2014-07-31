@@ -88,3 +88,8 @@ def create_user(request, template_name="create-user.html"):
 
 def index(request, template_name="index.html"):
     return render_to_response(template_name)
+
+@csrf_exempt
+def index(request, template_name="index.html"):
+    reservations = Reservation.objects.filter(end_time__gte=datetime.now())
+    return render_to_response(template_name, {"reservations": reservations})

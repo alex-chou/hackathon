@@ -1,3 +1,20 @@
+div {
+font-family: proxima-nova, sans-serif;
+}
+
+table {
+margin: 10px auto;
+font-family: proxima-nova, sans-serif;
+text-align: center;
+font-size: 14pt;
+border-collapse: collapse;
+}
+
+td, th {
+padding: 5px 10px;
+border:1px solid #999;
+}
+
 #nav {
 text-align: center;
 margin-left: auto;

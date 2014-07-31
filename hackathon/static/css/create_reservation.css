@@ -1,3 +1,16 @@
+div {
+font-family: proxima-nova, sans-serif;
+}
+
+table {
+margin: 0 auto;
+font-family: proxima-nova, sans-serif;
+}
+
+form {
+margin: 10px 0;
+}
+
 #nav a {
 display: inline;
 text-decoration: none;
@@ -24,14 +37,7 @@ margin-left: auto;
 margin-right: auto;
 }
 
-form {
-margin: 10px 0;
-}
-
-#center-button {
+#center {
 text-align: center;
-}
-
-table {
-margin: 0 auto;
+padding-top: 10px;
 }

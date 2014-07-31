@@ -15,5 +15,25 @@
       </div>
     </div></br>
     <img src="{% static 'images/goodnews.jpg' %}" alt="Good news, everyone!" style="margin-left: 32%;"/>
+    <table>
+      <thead>
+        <tr>
+          <th>Recreation</th>
+          <th>Start Time</th>
+          <th>End Time</th>
+          <th>Reserver</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+    {% for r in reservations %}
+      <tr>
+        <td>{{ r.recreation.name }}</td>
+        <td>{{ r.start_time }}</td>
+        <td>{{ r.end_time }}</td>
+        <td>{{ r.user.username }}</td>
+        <td>{{ r.notes }}</td>
+      </tr>
+    {% endfor %}
+    </table>
   </body>
 </html>
