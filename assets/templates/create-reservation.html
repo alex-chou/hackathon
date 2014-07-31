@@ -17,35 +17,18 @@
       </div>
     </div>
 
-    <div="center">
-      <form action="" method="post">
-        {% if reservation_form.errors %}
-          <p class="error_message">
-            Please correct the error(s) for {{ reservation_form.errors }}.
-          </p>
-        {% endif %}
-        <table>
-          <tr><th>
-            <label for="id_recreation">Recreation:</label></th><td><select id="id_recreation" name="recreation">
-              <option value="" selected="selected">---------</option>
-              <option value="1">ping-pong</option>
-          </select>
-          </td></tr>
-          <tr><th>
-            <label for="id_user">User:</label></th><td><select id="id_user" name="user">
-              <option value="" selected="selected">---------</option>
-              <option value="1">alex_chou</option>
-              <option value="2">asdklfjasjdfk</option>
-            </select>
-          </td></tr>
-          <tr><th><label for="id_start_time">Start time:</label></th><td><input id="id_start_time" name="start_time" type="text" /></td></tr>
-          <tr><th><label for="id_end_time">End time:</label></th><td><input id="id_end_time" name="end_time" type="text" /></td></tr>
-          <tr><th><label for="id_notes">Notes:</label></th><td><textarea cols="40" id="id_notes" name="notes" rows="10">
-          </textarea></td></tr>
-        </table>
+    <div>{{ success }}</div>
+    <form action="" method="post">
+      {% if reservation_form.errors %}
+        <p class="error_message">
+          Please correct the error(s) for {{ reservation_form.errors }}.
+        </p>
+      {% endif %}
+      <table>{{ reservation_form.as_table }}</table>
+      <div id="center-button">
         <input type="submit" value="Submit"/>
-      </form>
-    </div>
+      </div>
+    </form>
 
   </body>
 </html>
