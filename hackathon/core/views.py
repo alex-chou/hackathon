@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django import forms
 from django.contrib.auth.decorators import login_required
 from django.http import Http404, HttpResponse
@@ -50,6 +52,7 @@ def create_reservation(request, template_name="create-reservation.html"):
     else:
         form = ReservationForm()
 
+    print form
     return render_to_response(template_name, {"reservation_form": form})
 
 @csrf_exempt

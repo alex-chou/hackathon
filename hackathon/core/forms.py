@@ -16,4 +16,4 @@ class ReservationForm(forms.ModelForm):
 class UserForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ("email", "password", "username")
+        fields = ("email", "username", "password")

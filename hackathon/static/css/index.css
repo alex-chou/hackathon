@@ -1,13 +1,26 @@
-a {
+#nav {
+text-align: center;
+margin-left: auto;
+margin-right: auto;
+}
+
+#nav a {
 display: inline;
 text-decoration: none;
 padding: 10px;
 font-size: 150%;
 }
 
-a:hover {
+#nav a:hover {
 font-style: oblique;
 background-color: #b1dafb;
 padding: 10px;
 font-size: 150%;
 }
+
+#headline {
+text-align: center;
+font-size: 200%;
+padding: 10px;
+}
+

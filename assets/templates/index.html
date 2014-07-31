@@ -5,9 +5,15 @@
   </head>
   <body>
     {% load staticfiles %}
-    <a href="user">Create User</a></br>
-    <a href="recreation">Create Recreation</a></br>
-    <a href="reservation">Create Reservation</a></br>
+    <div id="header">
+      <div id="headline">
+        Reservation System
+      </div>
+      <div id="nav">
+        <a href="/">View All Reservations</a>
+        <a href="{% url 'reservation'%}">Create Reservation</a>
+      </div>
+    </div></br>
     <img src="{% static 'images/goodnews.jpg' %}" alt="Good news, everyone!" style="margin-left: 32%;"/>
   </body>
 </html>
