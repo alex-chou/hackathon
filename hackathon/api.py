@@ -90,7 +90,7 @@ class ReservationResource(CORSResource):
     recreation = fields.ForeignKey(RecreationResource, 'recreation', full=True)
 
     class Meta:
-        queryset = Reservation.objects.all()
+        queryset = Reservation.objects.all().order_by('end_time')
         resource_name = "reservations"
         detail_allowed_methods = ["get", "post"]
         list_allowed_methods = ["get", "post"]
