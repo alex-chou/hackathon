@@ -24,14 +24,13 @@ margin-right: auto;
 #nav a {
 display: inline;
 text-decoration: none;
-padding: 10px;
+padding: 8px;
 font-size: 150%;
 }
 
 #nav a:hover {
-font-style: oblique;
 background-color: #b1dafb;
-padding: 10px;
+padding: 8px;
 font-size: 150%;
 }
 
