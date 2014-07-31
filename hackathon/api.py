@@ -17,7 +17,8 @@ class CORSResource(ModelResource):
     def create_response(self, *args, **kwargs):
         response = super(CORSResource, self).create_response(*args, **kwargs)
         response['Access-Control-Allow-Origin'] = '*'
-        response['Access-Control-Allow-Headers'] = 'Content-Type'
+        response['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept'
+        response['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS, PUT'
         return response
 
     def method_check(self, request, allowed=None):
@@ -44,6 +45,9 @@ class CORSResource(ModelResource):
 
         if not format:
             format = request.META.get("CONTENT_TYPE", "application/json")
+
+        if format == "application/x-www-form-urlencoded":
+            return request.POST
 
         if format.startswith("multipart"):
             data = request.POST.copy()
@@ -145,7 +149,10 @@ class ReservationResource(CORSResource):
             user=user,
         )
 
-        return bundle
+        response = http.HttpResponse('Success')
+        response['Access-Control-Allow-Origin'] = '*'
+        response['Access-Control-Allow-Headers'] = 'Content-Type'
+        raise ImmediateHttpResponse(response=response)
 
     def create_response(self, *args, **kwargs):
         response = super(CORSResource, self).create_response(*args, **kwargs)
