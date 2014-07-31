@@ -3,13 +3,14 @@ from datetime import datetime, timedelta
 from django import forms
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.http import Http404, HttpResponse
 from django.shortcuts import render, render_to_response
 from django.template import RequestContext
 from django.views.decorators.csrf import csrf_exempt
 
 from hackathon.core.forms import RecreationForm, ReservationForm, UserForm
-from hackathon.core.models import Recreation, Reservation, User
+from hackathon.core.models import Recreation, Reservation
 
 @csrf_exempt
 def create_recreation(request, template_name="create-recreation.html"):
@@ -78,7 +79,7 @@ def create_user(request, template_name="create-user.html"):
                 username = form.cleaned_data["email"].split("@")[0],
                 password = form.cleaned_data["password"]
             )
-            success = "user created!"
+            success = "%s signed up!" % form.cleaned_data["email"].split("@")[0]
             form = UserForm()
         except forms.ValidationError:
             return render_to_response(template_name, {"user_form": form}, context_instance=RequestContext(request))
