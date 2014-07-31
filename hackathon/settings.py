@@ -65,10 +65,7 @@ import dj_database_url
 DATABASES = {
 }
 
-if (os.getenv("HEROKU", False)):
-    DATABASES['default'] = dj_database_url.config(default="'postgres://ycxwsyblhverzj:RwxeUfbfpsYaJeg5eX3BA2DF-t@ec2-54-225-102-235.compute-1.amazonaws.com:5432/d315qoig2vddcv")
-else:
-    DATABASE['default'] = "postgres://pg_local:S3curity@localhost:7501/db_local")
+DATABASES['default'] = dj_database_url.config(default="'postgres://ycxwsyblhverzj:RwxeUfbfpsYaJeg5eX3BA2DF-t@ec2-54-225-102-235.compute-1.amazonaws.com:5432/d315qoig2vddcv")
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
