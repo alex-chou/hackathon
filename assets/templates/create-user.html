@@ -3,27 +3,34 @@
   <head>
   
     <link type="text/css" href="/static/css/create_user.css" rel="Stylesheet"/>
+    <link type="text/css" href="/static/css/base.css" rel="Stylesheet"/>
 
   </head>
   <body>
+    <div id="wrapper">
 
-    <div id="header">
-      <div id="headline">
-        Reservation System
-      </div>
-      <div id="nav">
-        <a href="../">View All Reservations</a>
-        <a href="{% url 'reservation'%}">Create Reservation</a>
-        <a href="{% url 'signup'%}">Sign Up</a>
-      </div>
+      <div id="header">
+        <div id="headline">
+          Reservation System
+        </div>
+        <div id="nav">
+          <a href="../">View All Reservations</a>
+          <a href="{% url 'reservation'%}">Create Reservation</a>
+          <a href="{% url 'signup'%}">Sign Up</a>
+        </div>
+      </div></br>
+
     </div>
+    <div id="wrapper">
 
-    <div id="center">{{ success }}</div>
-    <form action="" method="post">
-      <table>{{ user_form.as_table }}</table>
-      <div id="center">
-        <input type="submit" value="Submit"/>
-      </div>
-    </form>
+      <div id="center">{{ success }}</div>
+      <form action="" method="post">
+        <table>{{ user_form.as_table }}</table>
+        <div id="center">
+          <input type="submit" value="Submit"/>
+        </div>
+      </form>
+
+    </div>
   </body>
 </html>

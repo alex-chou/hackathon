@@ -3,7 +3,7 @@ font-family: proxima-nova, sans-serif;
 }
 
 table {
-margin: 10px auto;
+margin: 20px auto;
 font-family: proxima-nova, sans-serif;
 text-align: center;
 font-size: 14pt;
@@ -14,29 +14,3 @@ td, th {
 padding: 5px 10px;
 border:1px solid #999;
 }
-
-#nav {
-text-align: center;
-margin-left: auto;
-margin-right: auto;
-}
-
-#nav a {
-display: inline;
-text-decoration: none;
-padding: 8px;
-font-size: 150%;
-}
-
-#nav a:hover {
-background-color: #b1dafb;
-padding: 8px;
-font-size: 150%;
-}
-
-#headline {
-text-align: center;
-font-size: 200%;
-padding: 10px;
-}
-

@@ -1,40 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+
     <link type="text/css" href="/static/css/index.css" rel="Stylesheet"/>
+    <link type="text/css" href="/static/css/base.css" rel="Stylesheet"/>
+
   </head>
   <body>
     {% load staticfiles %}
-    <div id="header">
-      <div id="headline">
-        Reservation System
+    <div id="wrapper">
+
+      <div id="header">
+        <div id="headline">
+          Reservation System
+        </div>
+        <div id="nav">
+          <a href="{% url 'home'%}">View All Reservations</a>
+          <a href="{% url 'reservation'%}">Create Reservation</a>
+          <a href="{% url 'signup'%}">Sign Up</a>
+        </div>
+      </div></br>
+
+    </div>
+    <div id="wrapper">
+
+      <div id="center">
+        <img src="{% static 'images/goodnews.jpg' %}" alt="Good news, everyone!"/>
       </div>
-      <div id="nav">
-        <a href="{% url 'home'%}">View All Reservations</a>
-        <a href="{% url 'reservation'%}">Create Reservation</a>
-        <a href="{% url 'signup'%}">Sign Up</a>
-      </div>
-    </div></br>
-    <img src="{% static 'images/goodnews.jpg' %}" alt="Good news, everyone!" style="margin-left: 32%;"/>
-    <table>
-      <thead>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Recreation</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Reserver</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+      {% for r in reservations %}
         <tr>
-          <th>Recreation</th>
-          <th>Start Time</th>
-          <th>End Time</th>
-          <th>Reserver</th>
-          <th>Notes</th>
+          <td>{{ r.recreation.name }}</td>
+          <td>{{ r.start_time }}</td>
+          <td>{{ r.end_time }}</td>
+          <td>{{ r.user.username }}</td>
+          <td>{{ r.notes }}</td>
         </tr>
-      </thead>
-    {% for r in reservations %}
-      <tr>
-        <td>{{ r.recreation.name }}</td>
-        <td>{{ r.start_time }}</td>
-        <td>{{ r.end_time }}</td>
-        <td>{{ r.user.username }}</td>
-        <td>{{ r.notes }}</td>
-      </tr>
-    {% endfor %}
-    </table>
+      {% endfor %}
+      </table>
+
+    </div> <!-- end wrapper -->
   </body>
 </html>

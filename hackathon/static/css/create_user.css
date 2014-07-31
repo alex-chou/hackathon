@@ -1,15 +1,5 @@
-div {
-font-family: proxima-nova, sans-serif;
-}
-
 form {
 margin: 10px 0;
-}
-
-input[type="submit"] {
-font-size: 12pt;
-height: 30px;
-width: 65px;
 }
 
 table {
@@ -29,35 +19,4 @@ font-size: 11pt;
 #id_email, #id_password {
 font-size: 12pt;
 width: 125%
-}
-
-#nav a {
-display: inline;
-text-decoration: none;
-padding: 8px;
-font-size: 150%;
-}
-
-#nav a:hover {
-background-color: #b1dafb;
-padding: 8px;
-font-size: 150%;
-}
-
-#headline {
-text-align: center;
-font-size: 200%;
-padding: 10px;
-}
-
-#nav {
-text-align: center;
-margin-left: auto;
-margin-right: auto;
-}
-
-#center {
-text-align: center;
-padding-top: 10px;
-font-size: 12pt;
 }
