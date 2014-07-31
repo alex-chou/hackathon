@@ -1,9 +1,10 @@
 from django import forms
 from django.contrib.auth.decorators import login_required
 from django.http import Http404, HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response
 
 from hackathon.core.forms import RecreationForm, ReservationForm, UserForm
+from hackathon.core.models import Recreation, Reservation, User
 
 def create_recreation(request, template_name="create-recreation.html"):
     if request.method == "POST":

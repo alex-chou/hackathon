@@ -70,10 +70,9 @@ DATABASES = {
     }
 }
 
-
-# UNCOMMENT these lines before deploying to heroku
-#   import dj_database_url
-#   DATABASES["default"] = dj_database_url.config()
+if os.getenv("HEROKU", False):
+    import dj_database_url
+    DATABASES["default"] = dj_database_url.config()
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/

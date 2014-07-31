@@ -8,7 +8,7 @@ class Recreation(Model):
     reservation_cooldown = IntegerField()
 
     def __unicode__(self):
-        return u"%s" % name
+        return u"%s" % self.name
 
 class Reservation(Model):
     active = BooleanField(default=True)
