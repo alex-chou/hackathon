@@ -2,10 +2,13 @@ from django import forms
 from django.contrib.auth.decorators import login_required
 from django.http import Http404, HttpResponse
 from django.shortcuts import render, render_to_response
+from django.template import RequestContext
+from django.views.decorators.csrf import csrf_exempt
 
 from hackathon.core.forms import RecreationForm, ReservationForm, UserForm
 from hackathon.core.models import Recreation, Reservation, User
 
+@csrf_exempt
 def create_recreation(request, template_name="create-recreation.html"):
     if request.method == "POST":
         form = RecreationForm(data=request.POST)
@@ -20,13 +23,13 @@ def create_recreation(request, template_name="create-recreation.html"):
             )
             return HttpResponse("success")
         except forms.ValidationError:
-            raise Http404
+            return render_to_response(template_name, {"recreation_form": form}, context_instance=RequestContext(request))
     else:
         form = RecreationForm()
 
     return render_to_response(template_name, {"recreation_form": form})
 
-@login_required
+@csrf_exempt
 def create_reservation(request, template_name="create-reservation.html"):
     if request.method == "POST":
         form = ReservationForm(data=request.POST)
@@ -43,12 +46,13 @@ def create_reservation(request, template_name="create-reservation.html"):
             )
             return HttpResponse("success")
         except forms.ValidationError:
-            raise Http404
+            return render_to_response(template_name, {"reservation_form": form}, context_instance=RequestContext(request))
     else:
         form = ReservationForm()
 
     return render_to_response(template_name, {"reservation_form": form})
 
+@csrf_exempt
 def create_user(request, template_name="create-user.html"):
     if request.method == "POST":
         form = UserForm(data=request.POST)
@@ -63,8 +67,11 @@ def create_user(request, template_name="create-user.html"):
             )
             return HttpResponse("success")
         except forms.ValidationError:
-            raise Http404
+            return render_to_response(template_name, {"user_form": form}, context_instance=RequestContext(request))
     else:
         form = UserForm()
 
     return render_to_response(template_name, {"user_form": form})
+
+def index(request, template_name="index.html"):
+    return render_to_response(template_name)
