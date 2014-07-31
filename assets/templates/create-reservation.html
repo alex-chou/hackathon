@@ -1,11 +1,60 @@
-{% load staticfiles %}
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link type="text/css" href="../css/create_reservation.css" rel="Stylesheet" />
+    <style>
+      #headline {
+      text-align: center;
+      font-size: 200%;
+      padding: 10px;
+      }
+
+      #nav {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      }
+
+      #nav a {
+      display: inline;
+      text-decoration: none;
+      padding: 10px;
+      font-size: 150%;
+      }
+
+      #nav a:hover {
+      background-color: #b1dafb;
+      padding: 10px;
+      font-size: 150%;
+      }
+
+      form {
+      width: 100%;
+      margin: 10px;
+      }
+
+      form > input {
+      float:right;
+      }
+
+      table {
+      margin: 0 auto;
+      }
+    </style>
   </head>
+
   <body>
+
+    <div id="header">
+      <div id="headline">
+        Reservation System
+      </div>
+      <div id="nav">
+        <a href="../user">Create User</a>
+        <a href="../recreation">Create Recreation</a>
+        <a href="../reservation">Create Reservation</a>
+      </div>
+    </div>
+
     <form action="" method="post">
       {% if reservation_form.errors %}
         <p class="error_message">
@@ -15,5 +64,6 @@
       <table>{{ reservation_form.as_table }}</table>
       <input type="submit" value="Submit"/>
     </form>
+
   </body>
 </html>
