@@ -1,24 +1,23 @@
+from django.contrib.auth.models import User
 from django.db.models import (BooleanField, CharField, DateTimeField, ForeignKey, IntegerField,
     Model, OneToOneField)
-
-class User(Model):
-    is_superuser = BooleanField(default=False)
-
-class UserProfile(Model):
-    email = CharField(max_length=75, unique=True, null=True, blank=True)
-    password = CharField(max_length=128, null=True, blank=True)
-    name = CharField(max_length=70, null=True, blank=True, db_index=True)
-    user = OneToOneField(User, related_name="user_profile")
 
 class Recreation(Model):
     name = CharField(max_length=70, null=True, blank=True, db_index=True)
     max_duration = IntegerField()
     reservation_cooldown = IntegerField()
 
+    def __unicode__(self):
+        return u"%s" % name
+
 class Reservation(Model):
     active = BooleanField(default=True)
+    notes = CharField(max_length=100, null=True, blank=True, db_index=True)
     created_at = DateTimeField(db_index=True, auto_now_add=True)
     start_time = DateTimeField(null=True, blank=True, db_index=True)
     end_time = DateTimeField(null=True, blank=True, db_index=True)
-    user_profile = ForeignKey(UserProfile)
+    user = ForeignKey(User)
     recreation = OneToOneField(Recreation, related_name="recreation")
+
+    def __unicode__(self):
+        return u"%s reserved" % self.recreation.name

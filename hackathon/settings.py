@@ -61,8 +61,14 @@ WSGI_APPLICATION = 'hackathon.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
+import dj_database_url
 DATABASES = {
 }
+
+if (os.getenv("HEROKU", False)):
+    DATABASES['default'] = dj_database_url.config(default="'postgres://ycxwsyblhverzj:RwxeUfbfpsYaJeg5eX3BA2DF-t@ec2-54-225-102-235.compute-1.amazonaws.com:5432/d315qoig2vddcv")
+else:
+    DATABASE['default'] = "postgres://pg_local:S3curity@localhost:7501/db_local")
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
@@ -79,9 +85,6 @@ USE_TZ = True
 
 
 # Parse database configuration from $DATABASE_URL
-import dj_database_url
-#DATABASES['default'] = 'postgres://ycxwsyblhverzj:RwxeUfbfpsYaJeg5eX3BA2DF-t@ec2-54-225-102-235.compute-1.amazonaws.com:5432/d315qoig2vddcv'
-DATABASES['default'] = dj_database_url.config()
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
