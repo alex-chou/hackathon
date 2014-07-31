@@ -45,9 +45,6 @@ class CORSResource(ModelResource):
         if not format:
             format = request.META.get("CONTENT_TYPE", "application/json")
 
-        if format == "application/x-www-form-urlencoded":
-            return request.POST
-
         if format.startswith("multipart"):
             data = request.POST.copy()
             data.update(request.FILES)
@@ -63,6 +60,7 @@ class RecreationResource(CORSResource):
         resource_name = "recreations"
         detail_allowed_methods = ["get"]
         list_allowed_methods = ["get"]
+        always_return_data = True
 
     def obj_create(self, bundle, **kwargs):
         bundle.obj = Recreation.objects.create(
@@ -148,3 +146,10 @@ class ReservationResource(CORSResource):
         )
 
         return bundle
+
+    def create_response(self, *args, **kwargs):
+        response = super(CORSResource, self).create_response(*args, **kwargs)
+        response['Access-Control-Allow-Origin'] = '*'
+        response['Access-Control-Allow-Headers'] = 'Content-Type'
+        return response
+
