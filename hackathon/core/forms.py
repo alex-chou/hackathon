@@ -15,8 +15,8 @@ class ReservationForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(ReservationForm, self).__init__(*args, **kwargs)
-        self.fields["start_time"].widget = widgets.AdminTimeWidget()
-        self.fields["end_time"].widget = widgets.AdminTimeWidget()
+        self.fields["start_time"].widget = widgets.AdminSplitDateTime()
+        self.fields["end_time"].widget = widgets.AdminSplitDateTime()
 
 class UserForm(forms.ModelForm):
     class Meta:

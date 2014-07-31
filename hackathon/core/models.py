@@ -17,7 +17,7 @@ class Reservation(Model):
     start_time = DateTimeField(null=True, blank=True, db_index=True)
     end_time = DateTimeField(null=True, blank=True, db_index=True)
     user = ForeignKey(User)
-    recreation = OneToOneField(Recreation, related_name="recreation")
+    recreation = ForeignKey(Recreation, related_name="recreation")
 
     def __unicode__(self):
         return u"%s reserved" % self.recreation.name
