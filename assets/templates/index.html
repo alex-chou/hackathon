@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head></head>
+  <head>
+    <link type="text/css" href="/static/css/index.css" rel="Stylesheet"/>
+  </head>
   <body>
+    {% load staticfiles %}
     <a href="user">Create User</a></br>
     <a href="recreation">Create Recreation</a></br>
     <a href="reservation">Create Reservation</a></br>
+    <img src="{% static 'images/goodnews.jpg' %}" alt="Good news, everyone!" style="margin-left: 32%;"/>
   </body>
 </html>
