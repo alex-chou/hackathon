@@ -13,11 +13,6 @@ class ReservationForm(forms.ModelForm):
         model = Reservation
         exclude = ("active", "created_at")
 
-    def __init__(self, *args, **kwargs):
-        super(ReservationForm, self).__init__(*args, **kwargs)
-        self.fields["start_time"].widget = widgets.AdminSplitDateTime()
-        self.fields["end_time"].widget = widgets.AdminSplitDateTime()
-
 class UserForm(forms.ModelForm):
     class Meta:
         model = User

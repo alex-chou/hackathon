@@ -15,6 +15,9 @@ class Migration(SchemaMigration):
         # Changing field 'Reservation.recreation'
         db.alter_column(u'core_reservation', 'recreation_id', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['core.Recreation']))
 
+        # Changing field 'Reservation.notes'
+        db.alter_column(u'core_reservation', 'notes', self.gf('django.db.models.fields.TextField')(max_length=100, null=True))
+
     def backwards(self, orm):
 
         # Changing field 'Reservation.recreation'
@@ -22,6 +25,9 @@ class Migration(SchemaMigration):
         # Adding unique constraint on 'Reservation', fields ['recreation']
         db.create_unique(u'core_reservation', ['recreation_id'])
 
+
+        # Changing field 'Reservation.notes'
+        db.alter_column(u'core_reservation', 'notes', self.gf('django.db.models.fields.CharField')(max_length=100, null=True))
 
     models = {
         u'auth.group': {
@@ -73,7 +79,7 @@ class Migration(SchemaMigration):
             'created_at': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'db_index': 'True', 'blank': 'True'}),
             'end_time': ('django.db.models.fields.DateTimeField', [], {'db_index': 'True', 'null': 'True', 'blank': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'notes': ('django.db.models.fields.CharField', [], {'db_index': 'True', 'max_length': '100', 'null': 'True', 'blank': 'True'}),
+            'notes': ('django.db.models.fields.TextField', [], {'db_index': 'True', 'max_length': '100', 'null': 'True', 'blank': 'True'}),
             'recreation': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'recreation'", 'to': u"orm['core.Recreation']"}),
             'start_time': ('django.db.models.fields.DateTimeField', [], {'db_index': 'True', 'null': 'True', 'blank': 'True'}),
             'user': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['auth.User']"})

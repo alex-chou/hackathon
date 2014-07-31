@@ -1,0 +1,19 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link type="text/css" href="../css/create_reservation.css" rel="Stylesheet" />
+  </head>
+  <body>
+    <form action="" method="post">
+      {% if reservation_form.errors %}
+        <p class="error_message">
+          Please correct the error(s) for {{ reservation_form.errors }}.
+        </p>
+      {% endif %}
+      <table>{{ reservation_form.as_table }}</table>
+      <input type="submit" value="Submit"/>
+    </form>
+  </body>
+</html>
