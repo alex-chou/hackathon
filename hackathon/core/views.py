@@ -43,7 +43,7 @@ def create_reservation(request, template_name="create-reservation.html"):
         try:
             if form.errors or\
                     not User.objects.filter(email=form.cleaned_data["email"]) or\
-                    not User.objects.get(email=form.cleaned_data["email"]).check_password(form.cleaned_data["password"]):
+                    not User.objects.get(email=form.cleaned_data["email"]).password == form.cleaned_data["password"]:
                 raise forms.ValidationError(form.errors)
             start_date = datetime.today() if form.cleaned_data["date_choices"] == u"today" else datetime.today() + timedelta(days=1)
             start_datetime = datetime.combine(start_date, datetime.strptime(form.cleaned_data["time_choices"], "%H:%M").time())
@@ -59,6 +59,9 @@ def create_reservation(request, template_name="create-reservation.html"):
             success = "%s reserved!" % form.cleaned_data["recreation"].name
             form = ReservationForm()
         except forms.ValidationError:
+            errors = forms.util.ErrorList()
+            errors = form._errors.setdefault(forms.forms.NON_FIELD_ERRORS, errors)
+            errors.append('Invalid email or password')
             return render_to_response(template_name, {"reservation_form": form}, context_instance=RequestContext(request))
     else:
         form = ReservationForm()

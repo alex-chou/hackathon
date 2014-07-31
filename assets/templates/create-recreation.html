@@ -3,11 +3,6 @@
   <head></head>
   <body>
     <form action="" method="post">
-      {% if recreation_form.errors %}
-        <p class="error_message">
-          Please correct the error(s) for {{ recreation_form.errors }}.
-        </p>
-      {% endif %}
       <table>{{ recreation_form.as_table }}</table>
       <input type="submit" value="Submit"/>
     </form>
