@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 from hackathon.core.forms import RecreationForm, ReservationForm, UserForm
 
-def create_recreation(request, template_name="create_recreation.html"):
+def create_recreation(request, template_name="create-recreation.html"):
     if request.method == "POST":
         form = RecreationForm(data=request.POST)
         try:
@@ -26,7 +26,7 @@ def create_recreation(request, template_name="create_recreation.html"):
     return render_to_response(template_name, {"recreation_form": form})
 
 @login_required
-def create_reservation(request, template_name="create_reservation.html"):
+def create_reservation(request, template_name="create-reservation.html"):
     if request.method == "POST":
         form = ReservationForm(data=request.POST)
         try:
@@ -46,9 +46,9 @@ def create_reservation(request, template_name="create_reservation.html"):
     else:
         form = ReservationForm()
 
-    return render_to_response(template_name, {"reservation_form"=form})
+    return render_to_response(template_name, {"reservation_form": form})
 
-def create_user(request, template_name="create_user.html"):
+def create_user(request, template_name="create-user.html"):
     if request.method == "POST":
         form = UserForm(data=request.POST)
         try:
